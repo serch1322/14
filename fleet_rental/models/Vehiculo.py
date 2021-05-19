@@ -22,7 +22,7 @@ class EntidadMatricula(models.Model):
         self.ensure_one()
         activo = self.env['account.asset']
         valores_activo = {}
-        if tipo == 'carga':
+        if self.tipo == 'carga':
             valores_activo.update({
                 'name': self.license_plate,
                 'original_value': self.net_car_value,
@@ -42,7 +42,7 @@ class EntidadMatricula(models.Model):
             })
             activo_creado = activo.create(valores_activo)
         else:
-            if depr == 'total':
+            if self.depr == 'total':
                 valores_activo.update({
                     'name': self.license_plate,
                     'original_value': self.net_car_value,
