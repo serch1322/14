@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api, _
-import datetime
+from datetime import datetime, date, timedelta
 
 class EntidadMatricula(models.Model):
     _inherit = ['fleet.vehicle']
