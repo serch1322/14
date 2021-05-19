@@ -33,9 +33,9 @@ class EntidadMatricula(models.Model):
                 'method_period': '1',
                 'first_depreciation_date': date.today(),
                 'company_id':1,
-                'account_asset_id': self.categoria.activo.id,
-                'account_depreciation_id': self.categoria.amortizacion.id,
-                'account_depreciation_expense_id': self.categoria.gasto.id,
+                'account_asset_id': self.categoria.activo,
+                'account_depreciation_id': self.categoria.amortizacion,
+                'account_depreciation_expense_id': self.categoria.gasto,
                 'journal_id': 3,
                 'state':'open',
 
