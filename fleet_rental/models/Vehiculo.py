@@ -19,10 +19,10 @@ class EntidadMatricula(models.Model):
     depr = fields.Selection([('total', 'Depreciación Total'), ('parcial', 'Depreciación Parcial')],string="Tipo de Depreciación",default=False)
 
     def depreciacion(self):
+        self.ensure_one()
+        activo = self.env['account.asset']
+        valores_activo = {}
         if 'tipo' == 'carga':
-            self.ensure_one()
-            activo = self.env['account.asset']
-            valores_activo = {}
             valores_activo.update({
                 'name': self.license_plate,
                 'original_value': self.net_car_value,
@@ -30,6 +30,7 @@ class EntidadMatricula(models.Model):
                 'salvage_value': 0,
                 'method': 'linear',
                 'method_number':48,
+                'method_period': '1',
                 'first_depreciation_date': date.today(),
                 'company_id':1,
                 'account_asset_id': self.categoria.activo.id,
@@ -42,9 +43,6 @@ class EntidadMatricula(models.Model):
             activo_creado = activo.create(valores_activo)
         else:
             if 'depr' == 'total':
-                self.ensure_one()
-                activo = self.env['account.asset']
-                valores_activo = {}
                 valores_activo.update({
                     'name': self.license_plate,
                     'original_value': self.net_car_value,
@@ -65,9 +63,6 @@ class EntidadMatricula(models.Model):
                 activo_creado = activo.create(valores_activo)
             else:
                 if 'self.net_car_value' > '175000':
-                    self.ensure_one()
-                    activo = self.env['account.asset']
-                    valores_activo = {}
                     valores_activo.update({
                         'name': self.license_plate,
                         'original_value': self.net_car_value,
@@ -87,9 +82,6 @@ class EntidadMatricula(models.Model):
                     })
                     activo_creado = activo.create(valores_activo)
                 elif 'self.net_car_value' <= '175000':
-                    self.ensure_one()
-                    activo = self.env['account.asset']
-                    valores_activo = {}
                     valores_activo.update({
                         'name': self.license_plate,
                         'original_value': self.net_car_value,
