@@ -37,7 +37,7 @@ class EntidadMatricula(models.Model):
                 'account_depreciation_id': self.categoria.amortizacion,
                 'account_depreciation_expense_id': self.categoria.gasto,
                 'journal_id': 3,
-                'state':'open',
+                'state':'draft',
 
             })
             activo_creado = activo.create(valores_activo)
@@ -57,7 +57,7 @@ class EntidadMatricula(models.Model):
                     'account_depreciation_id': self.categoria.amortizacion.id,
                     'account_depreciation_expense_id': self.categoria.gasto.id,
                     'journal_id': 3,
-                    'state': 'open',
+                    'state': 'draft',
 
                 })
                 activo_creado = activo.create(valores_activo)
@@ -77,7 +77,7 @@ class EntidadMatricula(models.Model):
                         'account_depreciation_id': self.categoria.amortizacion.id,
                         'account_depreciation_expense_id': self.categoria.gasto.id,
                         'journal_id': 3,
-                        'state': 'open',
+                        'state': 'draft',
 
                     })
                     activo_creado = activo.create(valores_activo)
@@ -96,7 +96,7 @@ class EntidadMatricula(models.Model):
                         'account_depreciation_id': self.categoria.amortizacion.id,
                         'account_depreciation_expense_id': self.categoria.gasto.id,
                         'journal_id': 3,
-                        'state': 'open',
+                        'state': 'draft',
 
                     })
                     activo_creado = activo.create(valores_activo)
