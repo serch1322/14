@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="seguros_en_vehiculo" model="ir.ui.view">
+            <field name="name">seguros.en.vehiculo</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='return_action_to_open']" position="after">
+                    <button name="abrir_seguros" type="object" class="oe_stat_button" icon="fa-shield" >
+                        <field name="insurance_count" widget="statinfo" string="Seguro"/>
+                    </button>
+                </xpath>
+                <xpath expr="//field[@name='future_driver_id']" position="before">
+                    <field name="future_driver" string="Conductores Aprobados"/>
+                </xpath>
+                <field name="state_id" position="before">
+                    <button name="depreciacion" string="Depreciar Vehiculo" type="object" class="btn-primary"/>
+                </field>
+                <field name="model_year" position="after">
+                    <field name="categoria"/>
+                    <field name="tipo"/>
+                    <field name="carga" attrs="{'invisible': [('tipo', '!=', 'carga')]}"/>
+                </field>
+                <field name="future_driver_id" position="attributes">
+                    <attribute name="attrs">{'invisible':[('active','==',True)]}</attribute>
+                </field>
+                <field name="company_id" position="after">
+                    <field name="depr" attrs="{'invisible':[('tipo','==','carga')]}"/>
+                    <field name="license_plate" string="Placas" />
+                    <field name="entidad" string="Entidad de Placas" />
+                </field>
+                <field name="transmission" position="before">
+                    <field name="serie_motor" string="Numero de Serie Motor" />
+                    <field name="numero_cilindros" string="Numero de Cilindros" />
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

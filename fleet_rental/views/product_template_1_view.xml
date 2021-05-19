@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="producto_con_tipo">
+            <field name="name">producto.con.tipo</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <field name="categ_id" position="after">
+                    <field name="tipo_product"/>
+                </field>
+                <button name="action_update_quantity_on_hand" position="before">
+                    <button name="registrar" type="object"  class="oe_highlight" string="Registrar en Flota"/>
+                </button>
+            </field>
+        </record>
+    </data>
+</odoo>
