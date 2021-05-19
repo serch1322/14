@@ -30,7 +30,6 @@ class EntidadMatricula(models.Model):
                 'salvage_value': 0,
                 'method': 'linear',
                 'method_number':48,
-                'method_period':'1',
                 'first_depreciation_date': date.today(),
                 'company_id':1,
                 'account_asset_id': self.categoria.activo.id,
